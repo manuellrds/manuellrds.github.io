@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique para Revelar Mensagem</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(https://wallpaper.dog/large/7325.jpg);
+            background-size: cover;
+            background-position: center;
+            color: #ff1493; /* Cor rosa */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define uma fonte alternativa */
+        }
+        #container {
+            text-align: center;
+        }
+        #button-container {
+            display: inline-block;
+            position: relative;
+        }
+        #button {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #ff1493; /* Cor rosa para o botão */
+            color: #fff; /* Cor branca para o texto do botão */
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #message {
+            display: none;
+            font-size: 48px; /* Letras maiores */
+            margin-top: 20px;
+            color: #ff1493; /* Cor rosa para o texto da mensagem */
+        }
+        #signature {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .moving {
+            animation: moveButton 5s linear infinite, moveButtonLeftRight 1s alternate infinite; /* Animações de movimento */
+        }
+
+        @keyframes moveButton {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(50vw, 50vh); /* Move o botão para longe da tela */
+            }
+        }
+
+        @keyframes moveButtonLeftRight {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(40px); /* Move o botão para a direita */
+            }
+            75% {
+                transform: translateX(-40px); /* Move o botão para a esquerda */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="button-container">
+            <button id="button">Clique para Revelar</button>
+        </div>
+        <div id="message">Eu te amo Gabrielly!</div>
+        <div id="signature">Como tá o trabalho aí? Clica aí, minha fia.</div>
+        <div id="signature">Com amor, Emanuel. Saudades de você.</div>
+    </div>
+
+    <script>
+        const button = document.getElementById('button');
+        const message = document.getElementById('message');
+
+        button.addEventListener('click', () => {
+            button.classList.add('moving'); // Adiciona a classe "moving" para mover o botão rapidamente
+            setTimeout(() => {
+                button.style.display = 'none'; // Remove o botão após 10 segundos
+                message.style.display = 'block'; // Mostra a mensagem
+                setTimeout(() => {
+                    button.style.display = 'block'; // Reaparece o botão no centro
+                    message.style.display = 'none'; // Oculta a mensagem
+                    button.classList.remove('moving'); // Remove a classe "moving"
+                }, 10000); // 10 segundos
+            }, 10000); // 10 segundos
+        });
+    </script>
+</body>
+</html>
+
+
